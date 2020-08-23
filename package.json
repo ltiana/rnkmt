@@ -1,0 +1,19 @@
+{
+  "name": "rnkmt",
+  "version": "1.0.0",
+  "description": "An application for learning egyptian hieroglyphs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },"repository": {
+    "type": "git",
+    "url": "https://github.com/ltiana/rnkmt.git"
+  },
+  "keywords": [
+    "hieroglypgs",
+    "egyptian hieroglyphs",
+    "egyptian language"
+  ],
+  "author": "Liliana Martinez",
+  "license": "MIT"
+}
