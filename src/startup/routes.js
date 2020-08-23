@@ -1,4 +1,5 @@
 const express = require('express'),
+      bodyParser = require('body-parser'),
       cors = require('cors'),
       userRoutes = require('../routes/users.js'),
       authRoutes = require('../routes/auth.js'),
@@ -9,6 +10,7 @@ const express = require('express'),
 module.exports = function(app) {
 
       app.use(express.json());
+      // app.use(bodyParser.json());
       app.use(cors());
       app.use(express.urlencoded({extended: true}));
       app.use(express.static('public'));

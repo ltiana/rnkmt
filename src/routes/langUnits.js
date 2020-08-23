@@ -1,6 +1,7 @@
 const auth = require('../middleware/auth.js'),
       express = require('express'),
       router = express.Router(),
+      mongoose = require('mongoose'),
       {LangUnit} = require('../models/langUnit.js');
 
 // create
@@ -10,6 +11,8 @@ router.post('/', auth, async (req, res) => {
     let langUnit = req.body;
 
     // TODO check that referenced hieroglyph ID has the right format
+    // langUnit.hieroglyph = mongoose.types.ObjectId(langUnit.hieroglyph) 
+
     // TODO check that referenced hieroglyph exists
 
     let  newLangUnit = await LangUnit.create(langUnit);

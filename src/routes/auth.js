@@ -9,18 +9,18 @@ const express = require('express'),
 // login
 router.post('/login', async (req, res) => {
     // validate input
-    const { error } = validateLoginInfo(req.body.loginInfo);
+    const { error } = validateLoginInfo(req.body);
     if (error) {
         console.log('JOI: ', error);
         return res.status(400).send(error);
     }
-    const foundUser = await User.findOne({username: req.body.loginInfo.username, deleted: false });
+    const foundUser = await User.findOne({username: req.body.username, deleted: false });
         console.log(foundUser);
     if (!foundUser) return res.status(400).send('Invalid username or password')
 
 
     // compare password
-    let validPassword = await bcrypt.compare(req.body.loginInfo.password, foundUser.password)
+    let validPassword = await bcrypt.compare(req.body.password, foundUser.password)
     console.log(validPassword);
     if (!validPassword) return res.status(400).send('Invalid username or password')
 

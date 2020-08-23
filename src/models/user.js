@@ -41,7 +41,7 @@ const userSchema = new mongoose.Schema({
         },
         learner: {
             type: Boolean,
-            default: true
+            default: false
         }
     },
     created: {
@@ -51,10 +51,6 @@ const userSchema = new mongoose.Schema({
     updated: {
         type: Date,
         default: Date.now
-    },
-    deleted: {
-        type: Boolean,
-        default: false
     }
 });
 

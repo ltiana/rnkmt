@@ -16,19 +16,19 @@ router.post('/', async (req, res) => {
     }
 
     // check for username existance
-    let usernameExists = await User.findOne({username: req.body.user.username });
+    let usernameExists = await User.findOne({username: req.body.username });
     if (usernameExists) {
         return res.status(400).send('This username is already taken')
     }
 
     //check for email existance
-    let emailExists = await User.findOne({email: req.body.user.email });
+    let emailExists = await User.findOne({email: req.body.email });
     if (emailExists) {
         return res.status(400).send('This email is already taken')
     }
 
     // create a new user with a hashed password
-    let newUser = req.body.user;
+    let newUser = req.body;
     let salt = await bcrypt.genSalt(10);
     newUser.password = await bcrypt.hash(newUser.password, salt);
 
