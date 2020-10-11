@@ -40,9 +40,17 @@ const hieroglyphSchema = new mongoose.Schema({
         required: true,
         unique: [true, 'The Gardiner code must be unique. You already have a heiroglyph with this code'],
     },
-    groupname: {
+    gardinergroup: {
         type: String,
-        required: true
+        required: true,
+    },
+    width: {
+        type: String,
+        enum: ["thin","narrow","broad"]
+    },
+    height: {
+        type: String,
+        enum: ["tall","low"]
     },
     description: {
         type: String
@@ -62,8 +70,10 @@ function validateHieroglyph(registerInfo) {
 
     const schema = Joi.object({
         file: Joi.string().min(2).max(150).required().label('File name'),
-        gardiner: Joi.string().min(2).max(100).required().label('Gardiner'),
-        groupname: Joi.string().min(2).max(200).required().label('Group name'),
+        gardiner: Joi.string().min(2).max(5).required().label('Gardiner code'),
+        gardinergroup: Joi.string().min(1).max(2).required().label('Gardiner group'),
+        width: Joi.string().label('Width'),
+        height: Joi.string().label('Height'),
         description: Joi.string().label('Description'),
         notes: Joi.string().label('Notes')
     })

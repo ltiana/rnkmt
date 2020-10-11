@@ -41,7 +41,7 @@ const userSchema = new mongoose.Schema({
         },
         learner: {
             type: Boolean,
-            default: false
+            default: true
         }
     },
     created: {

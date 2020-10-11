@@ -8,7 +8,7 @@ module.exports = async function (req, res, next) {
 
     try {
         const decoded = jwt.verify(token, process.env.JWT_LOGIN_SECRET);
-        const user = await User.findOne({_id: decoded._id, deleted: false, tokens: { $elemMatch: { token: token} }});
+        const user = await User.findOne({_id: decoded._id, tokens: { $elemMatch: { token: token} }});
         if(!user) return res.status(401).send('Access denied.');
 
         req.user = user;
